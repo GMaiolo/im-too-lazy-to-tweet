@@ -1,11 +1,9 @@
 {
   "name": "im-too-lazy-to-tweet",
   "version": "1.0.0",
-  "description": "",
+  "description": "I'm too lazy to Tweet everyday",
   "main": "runner.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
     "cheerio": "^1.0.0-rc.2",
