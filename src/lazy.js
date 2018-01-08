@@ -1,14 +1,17 @@
 const quotes = require('../data/quotes.json')
 const { wasAlreadyTweeted, randomBetween } = require('./utils')
 const twit = require('./utils').session()
+const maxTweetDelay = 120 * 60 * 1000 // min * sec * ms
 
 exports.tweetSomething = async function init() {
-  const text = await findUnusedTweet()
-  console.info('## Tweeting the following quote ##')
-  console.info(`${text}\n`)
+  const status = await findUnusedTweet()
+  const tweetDelay = ~~(Math.random() * maxTweetDelay)
+  console.info(`## Tweeting the following quote in ${~~(tweetDelay / 60 / 1000)} minutes ##`)
+  console.info(`${status}\n`)
   // tweeting!
-  twit.post('statuses/update', { status: text })
-    .catch(console.log)
+  setTimeout(() => {
+    twit.post('statuses/update', { status })
+  }, tweetDelay)
 }
 
 async function findUnusedTweet() {
