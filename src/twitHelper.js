@@ -42,7 +42,7 @@ async function findUnusedTweet(quotesCollection) {
     console.log(`ID: ${quote._id} was already tweeted, updating in DB`)
     updateTweetedStatus(quotesCollection, quote)
   }
-  return retry ? findUnusedTweet(quotesCollection) : quote.text
+  return retry ? findUnusedTweet(quotesCollection) : quote
 }
 
 module.exports = {
